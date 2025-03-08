@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para a Mulher que Ilumina Meu Mundo! 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa: #ff69b4;
+            --dourado: #ffd700;
+            --roxo: #da70d6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff69b4, #ff1493, #ff00ff, #da70d6);
+            background-size: 400% 400%;
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            animation: gradient 15s ease infinite;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        h1 {
+            color: #fff;
+            font-family: 'Great Vibes', cursive;
+            font-size: 5em;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            transform-style: preserve-3d;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        .photo-frame {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 50px;
+            position: relative;
+            animation: photoEntrance 2s ease-out;
+        }
+
+        .photo-frame::before,
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border: 3px solid var(--dourado);
+            top: -5%;
+            left: -5%;
+            animation: rotateFrame 20s linear infinite;
+        }
+
+        .photo-frame::after {
+            border-color: var(--roxo);
+            animation-delay: -10s;
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            transform: rotate(3deg);
+            box-shadow: 0 0 50px rgba(255,215,0,0.5);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.5s;
+        }
+
+        .photo-container:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2) brightness(1.05);
+        }
+
+        .quote-box {
+            background: linear-gradient(45deg, rgba(255,255,255,0.95), rgba(255,240,245,0.95));
+            padding: 40px;
+            border-radius: 30px;
+            font-size: 2em;
+            text-align: center;
+            margin: 60px auto;
+            width: 80%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .quote-box::before {
+            content: '❝';
+            position: absolute;
+            font-size: 100px;
+            color: var(--rosa);
+            top: -40px;
+            left: 20px;
+            opacity: 0.5;
+        }
+
+        .quote-text {
+            font-family: 'Great Vibes', cursive;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            animation: typewriter 4s steps(40) 1s both;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .music-player {
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 20px;
+            width: 500px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s ease-out 2s forwards;
+        }
+
+        .player-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .vinyl {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #222, #444);
+            position: relative;
+            animation: rotate 20s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .controls {
+            flex-grow: 1;
+        }
+
+        .progress-container {
+            height: 5px;
+            background: #ddd;
+            border-radius: 3px;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--rosa), var(--roxo));
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .floral-decor {
+            position: absolute;
+            width: 150px;
+            opacity: 0.3;
+            animation: floralFloat 8s ease-in-out infinite;
+        }
+
+        /* Animações */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes rotateFrame {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes photoEntrance {
+            from { transform: translateY(100px) rotateX(90deg); opacity: 0; }
+            to { transform: translateY(0) rotateX(0); opacity: 1; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes floralFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Efeitos de Partículas */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            animation: particleAnim 3s ease-out infinite;
+        }
+
+        @keyframes particleAnim {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floral-decor" style="top: 10%; left: 5%; transform: rotate(30deg);">🌸</div>
+    <div class="floral-decor" style="top: 20%; right: 5%; transform: rotate(-20deg);">🌺</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Para a Mulher Mais Extraordinária! 🌹</h1>
+            <div class="photo-frame">
+                <div class="photo-container">
+                    <!-- Insira o link da foto aqui -->
+                    <img src="imagem/ana.luiza.jpg" alt="Mulher Maravilhosa">
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <p class="quote-text">
+                Para você, que é meu verbo favorito: <br>
+amo seu riso, seus passos, seu 'alô' no telefone. <br>
+Feliz Dia da Mulher que me faz sentir infinito. <br>
+Te amo pra sempre. ❤️
+            </p>
+        </div>
+
+        <div class="music-player">
+            <audio id="audio">
+                <!-- Insira o link da música aqui -->
+                <source src="music/Eu_Amo_Voce_[_YouConvert.net_].mp3" type="audio/mpeg">
+            </audio>
+            <div class="player-content">
+                <div class="vinyl" id="vinyl"></div>
+                <div class="controls">
+                    <button class="play-btn" id="playBtn">▶️ Reproduzir</button>
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Controles do player de música
+        const audio = document.getElementById('audio');
+        const vinyl = document.getElementById('vinyl');
+        const playBtn = document.getElementById('playBtn');
+        const progress = document.getElementById('progress');
+
+        playBtn.addEventListener('click', togglePlay);
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', setDuration);
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                vinyl.style.animationPlayState = 'running';
+                playBtn.textContent = '⏸️ Pausar';
+            } else {
+                audio.pause();
+                vinyl.style.animationPlayState = 'paused';
+                playBtn.textContent = '▶️ Reproduzir';
+            }
+        }
+
+        function updateProgress() {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+            document.getElementById('currentTime').textContent = formatTime(audio.currentTime);
+        }
+
+        function setDuration() {
+            document.getElementById('duration').textContent = formatTime(audio.duration);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Efeito de partículas
+        function createParticle() {
+            const particles = ['❤️', '✨', '🌸', '🌠', '💫'];
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            particle.style.animationDuration = Math.random() * 2 + 1 + 's';
+            particle.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            document.body.appendChild(particle);
+            
+            particle.addEventListener('animationend', () => particle.remove());
+        }
+
+        setInterval(createParticle, 100);
+
+        // Efeito parallax suave
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.querySelector('.container').style.transform = 
+                `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
+        });
+    </script>
+</body>
+</html>
